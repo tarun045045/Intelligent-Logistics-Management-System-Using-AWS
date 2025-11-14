@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Shipment | Logistics Management System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-truck-fast me-2"></i>IntelliLogistics
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-chart-line me-1"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="add-shipment.html"><i class="fas fa-plus me-1"></i> Add Shipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cost-estimation.html"><i class="fas fa-calculator me-1"></i> Cost Estimation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="feedback.html"><i class="fas fa-comment me-1"></i> Feedback</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add Shipment Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="h3">Add New Shipment</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Add Shipment</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Shipment Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="shipmentForm">
+                            <!-- Customer Information -->
+                            <div class="mb-4">
+                                <h6 class="mb-3 text-primary">Customer Information</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="customerName" class="form-label">Customer Name*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="text" class="form-control" id="customerName" name="customerName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="customerEmail" class="form-label">Email Address*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="email" class="form-control" id="customerEmail" name="customerEmail" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="customerPhone" class="form-label">Phone Number*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="tel" class="form-control" id="customerPhone" name="customerPhone" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="customerCompany" class="form-label">Company Name</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="text" class="form-control" id="customerCompany" name="customerCompany">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <!-- Origin Information -->
+                            <div class="mb-4">
+                                <h6 class="mb-3 text-primary">Origin Information</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="originAddress" class="form-label">Street Address*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="text" class="form-control" id="originAddress" name="originAddress" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="originCity" class="form-label">City*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="text" class="form-control" id="originCity" name="originCity" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="originState" class="form-label">State/Province*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="text" class="form-control" id="originState" name="originState" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="originZip" class="form-label">Zip/Postal Code*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="text" class="form-control" id="originZip" name="originZip" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="originCountry" class="form-label">Country*</label>
+                                        <!-- ADDED name attribute -->
+                                        <select class="form-select" id="originCountry" name="originCountry" required>
+                                            <option value="">Select Country</option>
+                                            <option value="US" selected>United States</option>
+                                            <option value="CA">Canada</option>
+                                            <option value="MX">Mexico</option>
+                                            <option value="UK">United Kingdom</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <!-- Destination Information -->
+                            <div class="mb-4">
+                                <h6 class="mb-3 text-primary">Destination Information</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="destinationAddress" class="form-label">Street Address*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="text" class="form-control" id="destinationAddress" name="destinationAddress" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="destinationCity" class="form-label">City*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="text" class="form-control" id="destinationCity" name="destinationCity" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="destinationState" class="form-label">State/Province*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="text" class="form-control" id="destinationState" name="destinationState" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="destinationZip" class="form-label">Zip/Postal Code*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="text" class="form-control" id="destinationZip" name="destinationZip" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="destinationCountry" class="form-label">Country*</label>
+                                        <!-- ADDED name attribute -->
+                                        <select class="form-select" id="destinationCountry" name="destinationCountry" required>
+                                            <option value="">Select Country</option>
+                                            <option value="US" selected>United States</option>
+                                            <option value="CA">Canada</option>
+                                            <option value="MX">Mexico</option>
+                                            <option value="UK">United Kingdom</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <!-- Shipment Details -->
+                            <div class="mb-4">
+                                <h6 class="mb-3 text-primary">Shipment Details</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="shipmentDate" class="form-label">Shipment Date*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="date" class="form-control" id="shipmentDate" name="shipmentDate" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="deliveryDate" class="form-label">Expected Delivery Date*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="date" class="form-control" id="deliveryDate" name="deliveryDate" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="shipmentType" class="form-label">Shipment Type*</label>
+                                        <!-- ADDED name attribute -->
+                                        <select class="form-select" id="shipmentType" name="shipmentType" required>
+                                            <option value="">Select Type</option>
+                                            <option value="standard">Standard</option>
+                                            <option value="express">Express</option>
+                                            <option value="priority">Priority</option>
+                                            <option value="economy">Economy</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="transportMode" class="form-label">Transport Mode*</label>
+                                        <!-- ADDED name attribute -->
+                                        <select class="form-select" id="transportMode" name="transportMode" required>
+                                            <option value="">Select Mode</option>
+                                            <option value="road">Road</option>
+                                            <option value="rail">Rail</option>
+                                            <option value="air">Air</option>
+                                            <option value="sea">Sea</option>
+                                            <option value="multimodal">Multimodal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <!-- Package Information -->
+                            <div class="mb-4">
+                                <h6 class="mb-3 text-primary">Package Information</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="packageType" class="form-label">Package Type*</label>
+                                        <!-- ADDED name attribute -->
+                                        <select class="form-select" id="packageType" name="packageType" required>
+                                            <option value="">Select Type</option>
+                                            <option value="box">Box</option>
+                                            <option value="pallet">Pallet</option>
+                                            <option value="container">Container</option>
+                                            <option value="envelope">Envelope</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="packageQuantity" class="form-label">Quantity*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="number" class="form-control" id="packageQuantity" name="packageQuantity" min="1" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="weight" class="form-label">Weight (kg)*</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="number" class="form-control" id="weight" name="weight" step="0.01" min="0.01" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="length" class="form-label">Length (cm)</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="number" class="form-control" id="length" name="length" step="0.01" min="0">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="width" class="form-label">Width (cm)</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="number" class="form-control" id="width" name="width" step="0.01" min="0">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="height" class="form-label">Height (cm)</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="number" class="form-control" id="height" name="height" step="0.01" min="0">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label for="contents" class="form-label">Package Contents*</label>
+                                        <!-- ADDED name attribute -->
+                                        <textarea class="form-control" id="contents" name="contents" rows="2" required></textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <!-- ADDED name attribute -->
+                                            <input class="form-check-input" type="checkbox" id="fragileCheck" name="fragileCheck">
+                                            <label class="form-check-label" for="fragileCheck">
+                                                Fragile Contents
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <!-- ADDED name attribute -->
+                                            <input class="form-check-input" type="checkbox" id="hazardousCheck" name="hazardousCheck">
+                                            <label class="form-check-label" for="hazardousCheck">
+                                                Hazardous Materials
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <!-- Additional Information -->
+                            <div class="mb-4">
+                                <h6 class="mb-3 text-primary">Additional Information</h6>
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label for="specialInstructions" class="form-label">Special Instructions</label>
+                                        <!-- ADDED name attribute -->
+                                        <textarea class="form-control" id="specialInstructions" name="specialInstructions" rows="3"></textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="reference" class="form-label">Reference Number</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="text" class="form-control" id="reference" name="reference">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="insurance" class="form-label">Insurance Value ($)</label>
+                                        <!-- ADDED name attribute -->
+                                        <input type="number" class="form-control" id="insurance" name="insurance" step="0.01" min="0">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save me-1"></i> Create Shipment
+                                    </button>
+                                    <button type="reset" class="btn btn-outline-secondary ms-2">
+                                        <i class="fas fa-undo me-1"></i> Reset Form
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <!-- Summary Card -->
+                <div class="card shadow-sm mb-4 sticky-top" style="top: 80px; z-index: 1;">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Shipment Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="summaryContent">
+                            <p class="text-muted text-center mb-4">Complete the form to see your shipment summary</p>
+                            <div class="d-grid">
+                                <button class="btn btn-outline-primary" disabled>
+                                    <i class="fas fa-calculator me-1"></i> Calculate Cost
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="summaryDetails" class="d-none">
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item d-flex justify-content-between px-0">
+                                    <span class="text-muted">Origin:</span>
+                                    <span class="text-end fw-medium" id="summaryOrigin">New York, NY</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between px-0">
+                                    <span class="text-muted">Destination:</span>
+                                    <span class="text-end fw-medium" id="summaryDestination">Boston, MA</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between px-0">
+                                    <span class="text-muted">Delivery Date:</span>
+                                    <span class="text-end fw-medium" id="summaryDate">Oct 25, 2025</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between px-0">
+                                    <span class="text-muted">Package Type:</span>
+                                    <span class="text-end fw-medium" id="summaryPackage">Box (2)</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between px-0">
+                                    <span class="text-muted">Weight:</span>
+                                    <span class="text-end fw-medium" id="summaryWeight">15 kg</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between px-0">
+                                    <span class="text-muted">Dimensions:</span>
+                                    <span class="text-end fw-medium" id="summaryDimensions">40 × 30 × 20 cm</span>
+                                </li>
+                            </ul>
+
+                            <div class="alert alert-info">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-info-circle fa-lg mt-1"></i>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="alert-heading mb-1">Estimated Cost</h6>
+                                        <h3 class="mb-0 fw-bold" id="estimatedCost">$247.50</h3>
+                                        <p class="small mb-0">Final cost may vary based on actual weight and dimensions</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-grid mt-3">
+                                <button class="btn btn-success">
+                                    <i class="fas fa-check-circle me-1"></i> Confirm & Create
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Help Card -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Need Help?</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Not sure how to fill out the form or have questions about creating shipments?</p>
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-outline-primary">
+                                <i class="fas fa-book me-1"></i> View Guide
+                            </a>
+                            <a href="#" class="btn btn-outline-secondary">
+                                <i class="fas fa-headset me-1"></i> Contact Support
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-light mt-5 py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 IntelliLogistics. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/shipment.js"></script>
+</body>
+</html>

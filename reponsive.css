@@ -1,0 +1,207 @@
+/* ===== Responsive Design Rules ===== */
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+  
+  h1.h3 {
+    font-size: 1.5rem;
+  }
+  
+  .card-header {
+    padding: 1rem;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .stat-card {
+    margin-bottom: 1rem;
+  }
+  
+  .stat-card h2 {
+    font-size: 1.5rem;
+  }
+  
+  .table-responsive {
+    margin-bottom: 0;
+  }
+  
+  .btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .progress-tracker {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .progress-step::before {
+    height: 100%;
+    width: 2px;
+    top: 0;
+    left: 15px;
+    right: auto;
+  }
+  
+  .progress-step {
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+  
+  .progress-marker {
+    margin: 0 1rem 0 0;
+  }
+  
+  .stat-icon {
+    display: none;
+  }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  .sticky-top {
+    position: relative;
+    top: 0 !important;
+  }
+  
+  .navbar .nav-link {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .chart-container {
+    height: 300px !important;
+  }
+  
+  .col-form-label {
+    margin-bottom: 0.25rem;
+  }
+  
+  .card {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+  .navbar-brand .nav-text {
+    display: none;
+  }
+  
+  .table th, .table td {
+    padding: 0.75rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* Dashboard Page Responsiveness */
+@media (max-width: 767.98px) {
+  #shipmentVolumeChart, #shipmentStatusChart {
+    height: 250px !important;
+  }
+}
+
+/* Add Shipment Page Responsiveness */
+@media (max-width: 991.98px) {
+  #summaryDetails {
+    margin-top: 2rem;
+  }
+}
+
+/* Cost Estimation Page Responsiveness */
+@media (max-width: 767.98px) {
+  #estimateResults ul.list-group li {
+    font-size: 0.9rem;
+  }
+  
+  #totalCost {
+    font-size: 1.5rem;
+  }
+}
+
+/* Feedback Page Responsiveness */
+@media (max-width: 767.98px) {
+  .contact-info-card {
+    margin-top: 1.5rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  nav, footer, .no-print {
+    display: none !important;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0;
+  }
+  
+  body {
+    background-color: white !important;
+  }
+}
+
+/* Animation tweaks for mobile to reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark mode support (if user prefers it) */
+@media (prefers-color-scheme: dark) {
+  .dark-mode-enabled {
+    --dark: #f8fafc;
+    --medium: #cbd5e1;
+    --light: #1e293b;
+    --white: #0f172a;
+    
+    background-color: #0f172a;
+  }
+  
+  .dark-mode-enabled .card, 
+  .dark-mode-enabled .navbar,
+  .dark-mode-enabled .form-control,
+  .dark-mode-enabled .form-select {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+  }
+  
+  .dark-mode-enabled .text-dark {
+    color: #f8fafc !important;
+  }
+  
+  .dark-mode-enabled .bg-light {
+    background-color: #1e293b !important;
+  }
+  
+  .dark-mode-enabled .text-muted {
+    color: #cbd5e1 !important;
+  }
+}

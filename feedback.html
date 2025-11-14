@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | Logistics Management System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-truck-fast me-2"></i>IntelliLogistics
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-chart-line me-1"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="add-shipment.html"><i class="fas fa-plus me-1"></i> Add Shipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cost-estimation.html"><i class="fas fa-calculator me-1"></i> Cost Estimation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="feedback.html"><i class="fas fa-comment me-1"></i> Feedback</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Feedback Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="h3">Feedback & Support</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Feedback</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Feedback Form Card -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Send Us Your Feedback</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Alerts for feedback submission status -->
+                        <div id="feedbackSuccess" class="alert alert-success d-none" role="alert">
+                            <i class="fas fa-check-circle me-2"></i> Thank you! Your feedback has been submitted successfully.
+                        </div>
+                        <div id="feedbackError" class="alert alert-danger d-none" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i> <span id="errorMessage">There was an error submitting your feedback. Please try again.</span>
+                        </div>
+
+                        <form id="feedbackForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Full Name*</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address*</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="feedbackType" class="form-label">Feedback Type*</label>
+                                    <select class="form-select" id="feedbackType" name="feedbackType" required>
+                                        <option value="">Select Type</option>
+                                        <option value="general">General Feedback</option>
+                                        <option value="suggestion">Feature Suggestion</option>
+                                        <option value="bug">Report a Bug</option>
+                                        <option value="question">Question</option>
+                                        <option value="support">Support Request</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="subject" class="form-label">Subject*</label>
+                                    <input type="text" class="form-control" id="subject" name="subject" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Message*</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="shipmentId" class="form-label">Related Shipment ID (if applicable)</label>
+                                    <input type="text" class="form-control" id="shipmentId" name="shipmentId" placeholder="e.g. SH-12345">
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="termsCheck" name="termsCheck" required>
+                                        <label class="form-check-label" for="termsCheck">
+                                            I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">terms and conditions</a>*
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                                        <i class="fas fa-paper-plane me-1"></i> Submit Feedback
+                                    </button>
+                                    <button type="reset" class="btn btn-outline-secondary ms-2">
+                                        <i class="fas fa-undo me-1"></i> Reset Form
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <!-- Contact Information Card -->
+                <div class="card shadow-sm mb-4 contact-info-card">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Contact Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-4">
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="icon-square text-primary me-3">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">Email Support</h6>
+                                    <p class="mb-0"><a href="mailto:support@intellilogistics.com" class="text-decoration-none">support@intellilogistics.com</a></p>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <div class="icon-square text-primary me-3">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">Call Center</h6>
+                                    <p class="mb-0"><a href="tel:+18001234567" class="text-decoration-none">+1 (800) 123-4567</a></p>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="icon-square text-primary me-3">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">Working Hours</h6>
+                                    <p class="mb-0">Monday-Friday: 8AM - 8PM EST<br>Weekend: 9AM - 5PM EST</p>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="alert alert-info mb-4">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-info-circle mt-1"></i>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="alert-heading mb-1">Response Time</h6>
+                                    <p class="mb-0 small">We typically respond to all inquiries within 24 hours during business days.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h6 class="mb-3">Follow Us</h6>
+                        <div class="d-flex social-links">
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn btn-outline-primary btn-sm me-2"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="btn btn-outline-primary btn-sm"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Card -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">Frequently Asked Questions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item border-0 mb-2">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed bg-light rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        How do I track my shipment?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body pt-0">
+                                        You can track your shipment by entering your tracking ID on the dashboard or by visiting the "Track Shipment" page.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 mb-2">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed bg-light rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        How can I modify an existing shipment?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body pt-0">
+                                        You can modify an existing shipment from the dashboard by clicking on the "Edit" button next to the shipment in the recent shipments list.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed bg-light rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        What payment methods do you accept?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body pt-0">
+                                        We accept all major credit cards, PayPal, bank transfers, and company accounts with approved credit terms.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <a href="#" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-question-circle me-1"></i> View All FAQs
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Terms & Conditions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Feedback Submission</h6>
+                    <p>By submitting feedback, you grant IntelliLogistics permission to use your suggestions and comments for service improvement.</p>
+                    
+                    <h6>2. Privacy</h6>
+                    <p>Personal information submitted via this form is subject to our Privacy Policy and will only be used to address your feedback or inquiry.</p>
+                    
+                    <h6>3. Response Time</h6>
+                    <p>While we strive to respond to all feedback promptly, response times may vary based on volume and complexity of requests.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center py-4">
+                    <div class="mb-3">
+                        <i class="fas fa-check-circle text-success fa-4x"></i>
+                    </div>
+                    <h3 class="modal-title mb-3">Thank You!</h3>
+                    <p class="mb-4">Your feedback has been submitted successfully. The reference ID is:</p>
+                    <div class="bg-light p-3 rounded mb-3">
+                        <h4 class="fw-bold mb-0 feedback-id" id="displayFeedbackId">FB-12345678</h4>
+                    </div>
+                    <p class="text-muted small mb-0">We appreciate your input and will review it promptly.</p>
+                </div>
+                <div class="modal-footer justify-content-center border-0 pt-0">
+                    <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-light mt-5 py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 IntelliLogistics. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/feedback.js"></script>
+</body>
+</html>
